@@ -1,7 +1,6 @@
 <?php
 
 // DBに接続し処理を行うための記述
-
 require_once('config.php');
 
 
@@ -15,7 +14,6 @@ function connectPdo()
         exit();
     }
 }
-
 
 
 // 重複チェック
@@ -81,14 +79,22 @@ function getSelectedTodo($id)
 }
 
 
-// データの削除・今回は論理削除
+// データの削除
 function deleteTodoData($id)
 {
+  // //論理削除
+  // $dbh = connectPdo();
+  // $now = date('Y-m-d H:i:s');
+  // $sql = 'UPDATE todos SET deleted_at = :now WHERE id = :id';
+  // $stmt = $dbh->prepare($sql);
+  // $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+  // $stmt->bindValue(':now', $now);
+  // $stmt->execute();
+
+  //物理削除
   $dbh = connectPdo();
-  $now = date('Y-m-d H:i:s');
-  $sql = 'UPDATE todos SET deleted_at = :now WHERE id = :id';
+  $sql = 'DELETE FROM todos WHERE id = :id';
   $stmt = $dbh->prepare($sql);
   $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-  $stmt->bindValue(':now', $now);
   $stmt->execute();
 }
