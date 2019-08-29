@@ -1,0 +1,3 @@
+# session_file内のファイル全て無視、.gitkeepだけは例外
+session_file/*
+!.gitkeep
