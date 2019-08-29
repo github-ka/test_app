@@ -15,7 +15,7 @@
     </a>
   </div>
   <div>
-  <h2>welcome hello world</h2>
+  <h2>登録したワード</h2>
     <table>
       <tr>
         <th>ID</th>

@@ -78,12 +78,9 @@ function checkReferer()
     return $httpArr['path'];//urlの中のpathを取得してreturnで返している
 }
 
-//
+
 function checkdiff($post)
 {
-    echo'checkdiffです';
-    echo'<br>';
-    // return true or false の仕組み
     if(diffData($post) == '0'){
         return true;
     } else {
@@ -111,7 +108,7 @@ function todoList()
 // 下記で記述したupdataData()にPOSTデータを渡して呼び出せばDBのupdata処理が実行させる
 function updateData($post)
 {
-    if (checkToken($post['token'])  && checkdiff($post['todo'])) {
+    if (checkToken($post['token']) && checkdiff($post['todo'])) {
         updateTodoData($post['id'], $post['todo']);
     }
 }
