@@ -17,6 +17,20 @@ function connectPdo()
 }
 
 
+
+// 重複チェック
+function diffData($todo_txt)
+{
+  $dbh = connectPdo();
+  $sql = 'SELECT count(todo) FROM todos WHERE todo = :todo_txt';
+  $stmt = $dbh->prepare($sql);
+  $stmt->bindValue(':todo_txt', $todo_txt, PDO::PARAM_STR);
+  $stmt->execute();
+  $data = $stmt->fetch();
+  return $data['count(todo)'];
+}
+
+
 // 新規作成処理
 function createTodoData($todo_txt) //データの登録処理
 {
@@ -67,7 +81,7 @@ function getSelectedTodo($id)
 }
 
 
-// データの削除・今回は論理削除をしよう。
+// データの削除・今回は論理削除
 function deleteTodoData($id)
 {
   $dbh = connectPdo();
