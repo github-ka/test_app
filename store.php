@@ -9,5 +9,6 @@ if ($res === 'index') {
   header('Location: ./index.php');
 } else {
   // var_dump($_SERVER['HTTP_REFERER']);
-  header('Location: '.$_SERVER['HTTP_REFERER']);
+  // header('Location: '.$_SERVER['HTTP_REFERER']);
+  oneReturn();
 }
